@@ -67,8 +67,11 @@ def render_password():
 # unused_var to make the Scale(command=) work
 def move_slider(unused_var):
     password_length_stringvar.set(slider.get())
+    if slider.get() >= 10:
+        password_length_num.place(x=230, y=120)
+    else:
+        password_length_num.place(x=240, y=120)
     password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
-
 
 title_label = Label(root, text="Password Generator", font=("Verdana", 26, "bold"), bg="#FFBC80", fg="white")
 title_label.place(x=53, y=5)
@@ -85,22 +88,22 @@ password_length_num = Label(root, text=slider.get(), bg="#FFBC80", fg="white", f
 password_length_num.place(x=230, y=120)
 
 lower_intvar = IntVar()
-lowercase_check = Checkbutton(root, text="Lowercase", variable=lower_intvar, padx=20, command=render_password)
+lowercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=lower_intvar, command=render_password)
 lowercase_check.select()
-#
+lowercase_check.place(x=121, y=170)
 
 upper_intvar = IntVar()
-uppercase_check = Checkbutton(root, text="Uppercase", variable=upper_intvar, padx=20, command=render_password)
+uppercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=upper_intvar, command=render_password)
 uppercase_check.select()
-#
+uppercase_check.place(x=121, y=200)
 
 numbers_intvar = IntVar()
-numbers_check = Checkbutton(root, text="Numbers", variable=numbers_intvar, padx=20, command=render_password)
-#
+numbers_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=numbers_intvar, command=render_password)
+numbers_check.place(x=121, y=230)
 
 symbols_intvar = IntVar()
-symbols_check = Checkbutton(root, text="Symbols", variable=symbols_intvar, padx=20, command=render_password)
-#
+symbols_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=symbols_intvar, command=render_password)
+symbols_check.place(x=121, y=260)
 
 generate_button = Button(root, text="Generate", command=render_password)
 #
