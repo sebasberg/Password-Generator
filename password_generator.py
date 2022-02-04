@@ -60,6 +60,53 @@ def generate_password(length, include_lowercase, include_uppercase, include_numb
     random.shuffle(temp)
     return "".join(temp)
 
-print(generate_password(30, True, True, True, True))
+def render_password():
+    password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
+
+# unused_var to make the Scale(command=) work
+def render_password_slider(unused_var):
+    password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
+
+
+title_label = Label(root, text="Password Generator")
+title_label.pack()
+
+password_length = Label(root, text="Password Length")
+password_length.pack()
+
+slider = Scale(root, from_=0, to=50, length=250, orient=HORIZONTAL, command=render_password_slider)
+slider.set(12)
+slider.pack()
+
+lower_intvar = IntVar()
+lowercase_check = Checkbutton(root, text="Lowercase", variable=lower_intvar, command=render_password)
+lowercase_check.select()
+lowercase_check.pack()
+
+upper_intvar = IntVar()
+uppercase_check = Checkbutton(root, text="Uppercase", variable=upper_intvar, command=render_password)
+uppercase_check.select()
+uppercase_check.pack()
+
+numbers_intvar = IntVar()
+numbers_check = Checkbutton(root, text="Numbers", variable=numbers_intvar, command=render_password)
+numbers_check.pack()
+
+symbols_intvar = IntVar()
+symbols_check = Checkbutton(root, text="Symbols", variable=symbols_intvar, command=render_password)
+symbols_check.pack()
+
+generate_button = Button(root, text="Generate", command=render_password)
+generate_button.pack()
+
+copy_button = Button(root, text="Copy")
+copy_button.pack()
+
+password = StringVar()
+password.set(generate_password(12, 1, 1, 0, 0))
+password_label = Label(root, text="password", textvariable=password)
+password_label.pack()
+
+
 
 root.mainloop()
