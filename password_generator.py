@@ -91,30 +91,38 @@ lower_intvar = IntVar()
 lowercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=lower_intvar, command=render_password)
 lowercase_check.select()
 lowercase_check.place(x=121, y=170)
+lower_label = Label(root, text="Lowercase", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+lower_label.place(x=145, y=170)
 
 upper_intvar = IntVar()
 uppercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=upper_intvar, command=render_password)
 uppercase_check.select()
 uppercase_check.place(x=121, y=200)
+upper_label = Label(root, text="Uppercase", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+upper_label.place(x=145, y=200)
 
 numbers_intvar = IntVar()
 numbers_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=numbers_intvar, command=render_password)
 numbers_check.place(x=121, y=230)
+numbers_label = Label(root, text="Numbers", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+numbers_label.place(x=145, y=230)
 
 symbols_intvar = IntVar()
 symbols_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=symbols_intvar, command=render_password)
 symbols_check.place(x=121, y=260)
+symbols_label = Label(root, text="Symbols", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+symbols_label.place(x=145, y=260)
 
-generate_button = Button(root, text="Generate", command=render_password)
-#
-
-copy_button = Button(root, text="Copy")
-#
+generate_button = Button(root, text="GENERATE PASSWORD", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=render_password)
+generate_button.place(x=170, y=310)
 
 password = StringVar()
 password.set(generate_password(12, 1, 1, 0, 0))
-password_label = Label(root, text="password", textvariable=password, width=60)
-#
+password_label = Label(root, text="password", bg="white", font=("Courier New", 16), textvariable=password, width=60, anchor=W)
+password_label.place(x=0, y=345)
+
+copy_button = Button(root, text="COPY", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2)
+copy_button.place(x=230, y=380)
 
 
 root.mainloop()
