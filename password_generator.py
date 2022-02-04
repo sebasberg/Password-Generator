@@ -3,8 +3,9 @@ import random, string
 
 root = Tk()
 root.title("Password Generator")
+root.configure(background="#FFBC80")
 root.iconbitmap("lock-icon.ico")
-root.geometry("500x700")
+root.geometry("500x600")
 root.resizable(0,0)
 
 # generates password based on length and types of characers user decided to include
@@ -64,49 +65,53 @@ def render_password():
     password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
 
 # unused_var to make the Scale(command=) work
-def render_password_slider(unused_var):
+def move_slider(unused_var):
+    password_length_stringvar.set(slider.get())
     password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
 
 
-title_label = Label(root, text="Password Generator")
-title_label.pack()
+title_label = Label(root, text="Password Generator", font=("Verdana", 26, "bold"), bg="#FFBC80", fg="white")
+title_label.place(x=53, y=5)
 
-password_length = Label(root, text="Password Length")
-password_length.pack()
+password_length = Label(root, text="Password Length", font=("Verdana", 14, "bold"), bg="#FFBC80", fg="white")
+password_length.place(x=154, y=70)
 
-slider = Scale(root, from_=0, to=50, length=250, orient=HORIZONTAL, command=render_password_slider)
+slider = Scale(root, from_=0, to=50, length=250, orient=HORIZONTAL, bg="#FC4F4F", activebackground="#FC4F4F", showvalue=0, bd=0, command=move_slider)
 slider.set(12)
-slider.pack()
+slider.place(x=125, y=100)
+
+password_length_stringvar = StringVar()
+password_length_num = Label(root, text=slider.get(), bg="#FFBC80", fg="white", font=("Verdana", 20, "bold"), anchor="center", textvariable=password_length_stringvar)
+password_length_num.place(x=230, y=120)
 
 lower_intvar = IntVar()
-lowercase_check = Checkbutton(root, text="Lowercase", variable=lower_intvar, command=render_password)
+lowercase_check = Checkbutton(root, text="Lowercase", variable=lower_intvar, padx=20, command=render_password)
 lowercase_check.select()
-lowercase_check.pack()
+#
 
 upper_intvar = IntVar()
-uppercase_check = Checkbutton(root, text="Uppercase", variable=upper_intvar, command=render_password)
+uppercase_check = Checkbutton(root, text="Uppercase", variable=upper_intvar, padx=20, command=render_password)
 uppercase_check.select()
-uppercase_check.pack()
+#
 
 numbers_intvar = IntVar()
-numbers_check = Checkbutton(root, text="Numbers", variable=numbers_intvar, command=render_password)
-numbers_check.pack()
+numbers_check = Checkbutton(root, text="Numbers", variable=numbers_intvar, padx=20, command=render_password)
+#
 
 symbols_intvar = IntVar()
-symbols_check = Checkbutton(root, text="Symbols", variable=symbols_intvar, command=render_password)
-symbols_check.pack()
+symbols_check = Checkbutton(root, text="Symbols", variable=symbols_intvar, padx=20, command=render_password)
+#
 
 generate_button = Button(root, text="Generate", command=render_password)
-generate_button.pack()
+#
 
 copy_button = Button(root, text="Copy")
-copy_button.pack()
+#
 
 password = StringVar()
 password.set(generate_password(12, 1, 1, 0, 0))
-password_label = Label(root, text="password", textvariable=password)
-password_label.pack()
-
+password_label = Label(root, text="password", textvariable=password, width=60)
+#
 
 
 root.mainloop()
