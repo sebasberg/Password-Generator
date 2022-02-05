@@ -5,7 +5,7 @@ import pyperclip
 root = Tk()
 root.title("Password Generator")
 root.configure(background="#DBD0C0")
-root.iconbitmap("lock-icon.ico")
+#root.iconbitmap("lock-icon.ico")
 root.geometry("500x600")
 root.resizable(0,0)
 
