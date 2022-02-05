@@ -4,7 +4,7 @@ import pyperclip
 
 root = Tk()
 root.title("Password Generator")
-root.configure(background="#FFBC80")
+root.configure(background="#DBD0C0")
 root.iconbitmap("lock-icon.ico")
 root.geometry("500x600")
 root.resizable(0,0)
@@ -77,47 +77,47 @@ def move_slider(unused_var):
 def copy_password():
     pyperclip.copy(password.get())
 
-title_label = Label(root, text="Password Generator", font=("Verdana", 26, "bold"), bg="#FFBC80", fg="white")
+title_label = Label(root, text="Password Generator", font=("Verdana", 26, "bold"), bg="#DBD0C0", fg="white")
 title_label.place(x=53, y=5)
 
-password_length = Label(root, text="Password Length", font=("Verdana", 14, "bold"), bg="#FFBC80", fg="white")
+password_length = Label(root, text="Password Length", font=("Verdana", 14, "bold"), bg="#DBD0C0", fg="white")
 password_length.place(x=154, y=70)
 
-slider = Scale(root, from_=0, to=50, length=250, orient=HORIZONTAL, bg="#FC4F4F", activebackground="#FC4F4F", showvalue=0, bd=0, command=move_slider)
+slider = Scale(root, from_=0, to=50, length=250, orient=HORIZONTAL, bg="#F9CF93", activebackground="#F9CF93", showvalue=0, bd=0, command=move_slider)
 slider.set(12)
 slider.place(x=125, y=100)
 
 password_length_stringvar = StringVar()
-password_length_num = Label(root, text=slider.get(), bg="#FFBC80", fg="white", font=("Verdana", 20, "bold"), anchor="center", textvariable=password_length_stringvar)
+password_length_num = Label(root, text=slider.get(), bg="#DBD0C0", fg="white", font=("Verdana", 20, "bold"), anchor="center", textvariable=password_length_stringvar)
 password_length_num.place(x=230, y=120)
 
 lower_intvar = IntVar()
-lowercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=lower_intvar, command=render_password)
+lowercase_check = Checkbutton(root, bg="#DBD0C0", activebackground="#DBD0C0", variable=lower_intvar, command=render_password)
 lowercase_check.select()
 lowercase_check.place(x=121, y=170)
-lower_label = Label(root, text="Lowercase", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+lower_label = Label(root, text="Lowercase", font=("Verdana", 10, "bold"), bg="#DBD0C0", fg="white")
 lower_label.place(x=145, y=170)
 
 upper_intvar = IntVar()
-uppercase_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=upper_intvar, command=render_password)
+uppercase_check = Checkbutton(root, bg="#DBD0C0", activebackground="#DBD0C0", variable=upper_intvar, command=render_password)
 uppercase_check.select()
 uppercase_check.place(x=121, y=200)
-upper_label = Label(root, text="Uppercase", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+upper_label = Label(root, text="Uppercase", font=("Verdana", 10, "bold"), bg="#DBD0C0", fg="white")
 upper_label.place(x=145, y=200)
 
 numbers_intvar = IntVar()
-numbers_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=numbers_intvar, command=render_password)
+numbers_check = Checkbutton(root, bg="#DBD0C0", activebackground="#DBD0C0", variable=numbers_intvar, command=render_password)
 numbers_check.place(x=121, y=230)
-numbers_label = Label(root, text="Numbers", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+numbers_label = Label(root, text="Numbers", font=("Verdana", 10, "bold"), bg="#DBD0C0", fg="white")
 numbers_label.place(x=145, y=230)
 
 symbols_intvar = IntVar()
-symbols_check = Checkbutton(root, bg="#FFBC80", activebackground="#FFBC80", fg="#FC4F4F", activeforeground="#FC4F4F", variable=symbols_intvar, command=render_password)
+symbols_check = Checkbutton(root, bg="#DBD0C0", activebackground="#DBD0C0", variable=symbols_intvar, command=render_password)
 symbols_check.place(x=121, y=260)
-symbols_label = Label(root, text="Symbols", font=("Verdana", 10, "bold"), bg="#FFBC80", fg="white")
+symbols_label = Label(root, text="Symbols", font=("Verdana", 10, "bold"), bg="#DBD0C0", fg="white")
 symbols_label.place(x=145, y=260)
 
-generate_button = Button(root, text="GENERATE PASSWORD", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=render_password)
+generate_button = Button(root, text="GENERATE PASSWORD", bg="#8E806A", activebackground="#C3B091", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=render_password)
 generate_button.place(x=170, y=310)
 
 password = StringVar()
@@ -125,7 +125,7 @@ password.set(generate_password(12, 1, 1, 0, 0))
 password_label = Label(root, text="password", bg="white", font=("Courier New", 16), textvariable=password, width=60, anchor=W)
 password_label.place(x=0, y=345)
 
-copy_button = Button(root, text="COPY", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=copy_password)
+copy_button = Button(root, text="COPY", bg="#8E806A", activebackground="#C3B091", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=copy_password)
 copy_button.place(x=230, y=380)
 
 
