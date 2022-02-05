@@ -1,5 +1,6 @@
 from tkinter import *
 import random, string
+import pyperclip
 
 root = Tk()
 root.title("Password Generator")
@@ -73,6 +74,9 @@ def move_slider(unused_var):
         password_length_num.place(x=240, y=120)
     password.set(generate_password(slider.get(), lower_intvar.get(), upper_intvar.get(), numbers_intvar.get(), symbols_intvar.get()))
 
+def copy_password():
+    pyperclip.copy(password.get())
+
 title_label = Label(root, text="Password Generator", font=("Verdana", 26, "bold"), bg="#FFBC80", fg="white")
 title_label.place(x=53, y=5)
 
@@ -121,7 +125,7 @@ password.set(generate_password(12, 1, 1, 0, 0))
 password_label = Label(root, text="password", bg="white", font=("Courier New", 16), textvariable=password, width=60, anchor=W)
 password_label.place(x=0, y=345)
 
-copy_button = Button(root, text="COPY", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2)
+copy_button = Button(root, text="COPY", bg="#F76E11", activebackground="#FF9F45", fg="white", activeforeground="white", font=("Verdana", 10, "bold"), bd=2, command=copy_password)
 copy_button.place(x=230, y=380)
 
 
