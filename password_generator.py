@@ -1,5 +1,6 @@
 from tkinter import *
 import random, string
+import pyperclip
 
 root = Tk()
 root.title("Password Generator")
